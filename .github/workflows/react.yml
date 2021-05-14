@@ -29,6 +29,11 @@ jobs:
 
     - name: Run the tests
       run: npm test
-
     - name: Build
       run: npm run build
+    
+    - name: Add artifact frontend
+    - uses: actions/upload-artifact@v2
+      with:
+        name: frontend
+        path: ./build
