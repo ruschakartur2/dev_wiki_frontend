@@ -62,9 +62,9 @@ const Login = (props) => {
             setLoading(false)
         }
     };
-   if (isLoggedIn) {
-       return <Redirect to="/profile"/>;
-   }
+    if (isLoggedIn) {
+        return <Redirect to="/profile" />;
+    }
 
     return (
 
@@ -112,4 +112,4 @@ const Login = (props) => {
 
     )
 }
-export default Login;
+export default Login

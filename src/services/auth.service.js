@@ -24,13 +24,22 @@ const login = (email,password) => {
         })
         .then((response)=>{
             console.log(response);
-            if(response.data.token){
-                localStorage.setItem('user', JSON.stringify(response.config.data));
+            if(response.data){
+                console.log(response.data.token)
+                axios.get(API_URL + 'me/', {
+                    headers : {
+                        Authorization: 'Token ' + response.data.token
+                    }
+                    })
+                    .then((response)=>{
+                        localStorage.setItem('user', JSON.stringify(response.data));
+                    })
             }
 
             return response.data
         });
 };
+
 
 const logout = () => {
     localStorage.removeItem("user");
@@ -40,5 +49,6 @@ const logout = () => {
 export default {
     register,
     login,
+
     logout
 };

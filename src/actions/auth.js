@@ -4,10 +4,11 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    SET_MESSAGE
+    SET_MESSAGE, PROFILE_SUCCESS
 } from "./types";
 
 import AuthService from "../services/auth.service";
+
 
 export const register = (email,password) => (dispatch) => {
     return AuthService.register(email,password).then(
@@ -50,7 +51,7 @@ export const login = (email, password) => (dispatch) => {
         (data) => {
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: {user:data.config}
+                payload: {user:data}
             });
 
             return Promise.resolve();

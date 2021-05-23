@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 const Profile = () => {
-    const { user: currentUser } = useSelector((state) => state.auth);
-
+    const currentUser = useSelector((state) => state.auth.user);
     if (!currentUser) {
         return <Redirect to="/login" />;
     }
+
 
     return (
         <div className="container">
