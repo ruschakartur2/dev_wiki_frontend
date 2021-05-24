@@ -6,7 +6,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
-import { register } from "../actions/auth";
+import { register } from "../../actions/auth";
 
 const required = (value) => {
     if (!value) {
@@ -39,7 +39,7 @@ const vpassword = (value) => {
     }
 };
 
-const Register = () => {
+const Register = (props) => {
     const form = useRef();
     const checkBtn = useRef();
 
@@ -72,6 +72,8 @@ const Register = () => {
             dispatch(register(email, password))
                 .then(() => {
                     setSuccessful(true);
+                    props.history.push('/login');
+                    window.location.reload();
                 })
                 .catch(() => {
                     setSuccessful(false);

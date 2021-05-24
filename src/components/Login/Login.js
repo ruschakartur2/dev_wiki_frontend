@@ -6,7 +6,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import {login} from "../actions/auth";
+import {login} from "../../actions/auth";
 
 const required = (value) => {
     if (!value){
@@ -18,6 +18,12 @@ const required = (value) => {
     }
 };
 
+const onSuccess = (response) => {
+    console.log(response)
+}
+const onFailure = (response) => {
+    console.log(response)
+}
 const Login = (props) => {
 
     const form = useRef();
@@ -107,6 +113,7 @@ const Login = (props) => {
                     )}
                     <CheckButton style={{display:"none"}} ref={checkBtn} />
                 </Form>
+
             </div>
         </div>
 
